@@ -92,7 +92,7 @@ gameModule.controller('playerGamesController', ['$scope', '$http', '$location', 
 
 gameModule.controller('gameController', ['$rootScope', '$routeParams', '$scope', '$http',
     function (rootScope, routeParams, scope, http) {
-       var gameStatus;
+       var update_handler = setInterval(getInitialData, 600);
 
         function getInitialData() {
 
@@ -100,7 +100,10 @@ gameModule.controller('gameController', ['$rootScope', '$routeParams', '$scope',
                 //scope.gameProperties = data;
                 scope.gameProperties = data;
                 gameStatus = scope.gameProperties.gameStatus;
-                console.log(scope)
+                if(data.gameStatus == "F_PLAYER_WON" || data.gameStatus == "S_PLAYER_WON"){
+                    clearInterval(update_handler);
+                }
+                // console.log(scope)
                 getMoveHistory();
             }).error(function (data, status, headers, config) {
                 scope.errorMessage = "Failed do load game properties";
@@ -111,7 +114,6 @@ gameModule.controller('gameController', ['$rootScope', '$routeParams', '$scope',
             scope.gameProperties = data;
             console.log(scope)
         }
-        setInterval(getInitialData, 600);
 
         function getMoveHistory() {
             scope.movesInGame = [];
