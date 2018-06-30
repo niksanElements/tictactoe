@@ -1,0 +1,9 @@
+com.nikolay.tictactoe
+com.nikolay.tictactoe.repository
+com.nikolay.tictactoe.controller
+com.nikolay.tictactoe.service
+com.nikolay.tictactoe.model
+com.nikolay.tictactoe.model.doto
+com.nikolay.tictactoe.model.enums
+com.nikolay.tictactoe.security
+com.nikolay.tictactoe.config
