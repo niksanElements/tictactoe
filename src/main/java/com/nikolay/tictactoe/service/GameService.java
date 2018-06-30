@@ -81,8 +81,10 @@ public class GameService {
     }
     
     public List<Game> getPlayerGames(Player player) {
-        return gameRepository.findByGameStatus(
-                GameStatus.PROGRESS).stream().filter(game -> game.getFirstPlayer() == player).collect(Collectors.toList());
+        List<Game> result = gameRepository.findByFirstPlayerUsername(player.getUsername());
+        result.addAll(gameRepository.findBySecondPlayerUsername(player.getUsername()));
+        
+        return result;
     }
 
 

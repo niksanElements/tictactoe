@@ -18,4 +18,6 @@ import org.springframework.stereotype.Repository;
 public interface GameRepository extends CrudRepository<Game,Long>{
     List<Game> findByGameTypeAndGameStatus(GameType gameType, GameStatus gameStatus);
     List<Game> findByGameStatus(GameStatus gameStatus);
+    List<Game> findByFirstPlayerUsername(String username);
+    List<Game> findBySecondPlayerUsername(String username);
 }
