@@ -18,6 +18,7 @@ import com.nikolay.tictactoe.model.Player;
 import com.nikolay.tictactoe.model.Position;
 import com.nikolay.tictactoe.model.doto.CreateMoveDoto;
 import com.nikolay.tictactoe.model.doto.MoveDoto;
+import com.nikolay.tictactoe.model.enums.GameType;
 import com.nikolay.tictactoe.service.GameService;
 import com.nikolay.tictactoe.service.MoveService;
 import com.nikolay.tictactoe.service.PlayerService;
@@ -90,9 +91,13 @@ public class MoveController {
     @RequestMapping(value = "/turn", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public boolean isPlayerTurn() {
         Long gameId = (Long) httpSession.getAttribute("gameId");
+        Game game = gameService.getGame(gameId);
 
-        Long id = moveService.isPlayerTurn(gameService.getGame(gameId), gameService.getGame(gameId).getFirstPlayer(),
-                gameService.getGame(gameId).getSecondPlayer());
+        if(game.getGameType() == GameType.COMPUTER){
+            return true;
+        }
+
+        Long id = moveService.isPlayerTurn(game, game.getFirstPlayer(),game.getSecondPlayer());
 
         Player p = playerService.getLoggedUser();
 
