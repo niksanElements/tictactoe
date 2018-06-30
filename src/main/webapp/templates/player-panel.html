@@ -59,9 +59,9 @@
                     </thead>
                     <tbody>
                     <tr ng-repeat="game in gamesToJoin">
-                        <td>{{game.firstPlayer.userName}}</td>
+                        <td>{{game.firstPlayer.username}}</td>
                         <td>{{game.gameStatus}}</td>
-                        <td>{{game.created | date:'MM-dd-yyyy HH:mm:ss'}}</td>
+                        <td>{{game.date | date:'MM-dd-yyyy HH:mm:ss'}}</td>
                         <td>
                             <button type="submit" class="btn btn-sm" ng-click="joinGame(game.id)">
                             <span class="glyphicon glyphicon-plus"></span> Join </button>
@@ -97,7 +97,7 @@
                         </span>
                     </td>
                     <td>{{game.gameStatus}}</td>
-                    <td>{{game.created | date:'MM-dd-yyyy HH:mm:ss'}}</td>
+                    <td>{{game.date | date:'MM-dd-yyyy HH:mm:ss'}}</td>
                     <td>
                         <button class="btn btn-sm" ng-click="loadGame(game.id)">
                             <span class="glyphicon glyphicon-plus"></span> Load game </button>

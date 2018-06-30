@@ -72,9 +72,9 @@ public class MoveService {
 
     public GameStatus checkCurrentGameStatus(Game game) {
         if (GameLogic.isWinner(getPlayerMovePositionsInGame(game, game.getFirstPlayer()))) {
-            return GameStatus.F_PLAYER_WON;
+            return GameStatus.FIRST_PLAYER_WON;
         } else if (GameLogic.isWinner(getPlayerMovePositionsInGame(game, game.getSecondPlayer()))) {
-            return GameStatus.S_PLAYER_WON;
+            return GameStatus.SECOND_PLAYER_WON;
         } else if (GameLogic.isBoardFull(getTakenMovePositionsInGame(game))) {
             return GameStatus.TIE;
         } else if (game.getGameType() == GameType.COMPETITION && game.getSecondPlayer() == null ) {
