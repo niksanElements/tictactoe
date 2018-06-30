@@ -8,7 +8,8 @@
 }
 
 .gameon {
-    border-right: 1px dotted black;
+    /* border-right: 1px dotted black; */
+    margin: auto;
 }
 
 .gameover {
@@ -159,4 +160,10 @@ p {
     font: 90px sans-serif;
     text-align: center;
     vertical-align: center;
+}
+
+
+.center {
+    margin: auto;
+    padding: 10px;
 }
